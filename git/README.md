@@ -12,7 +12,7 @@ If you don't finish this before the end of class, come back for the lab section 
 ## Add Some Files to Develop Branch
 
 1. Using the terminal on your development machine, create a new `develop` branch within this repository and switch to it.
-1. Within this `git/exercises/` directory, create a new `index.html` file. Populate that file with the HTML necessary for a [basic web page](../../html-css/essential-html.md). Put something in the `<body>` section so you can see something on-screen.
+1. Within this `git/` directory, create a new `index.html` file. Populate that file with the HTML necessary for a [basic web page](../../html-css/essential-html.md). Put something in the `<body>` section so you can see something on-screen.
 1. Add and commit the new file to the `develop` branch.
 
 ## Create a Pull Request and Merge
@@ -30,7 +30,7 @@ If you don't finish this before the end of class, come back for the lab section 
 ## Add Some More Files to Develop Branch
 
 1. Back in your terminal, switch to your `develop` branch.
-1. Within this `/git/exercises` directory, create a new sub-directory named `css` and put a file named `index.css` in that new directory.
+1. Within this `git/` directory, create a new sub-directory named `css` and put a file named `index.css` in that new directory.
 1. Add a style rule that changes the [`background-color`](http://www.w3schools.com/cssref/pr_background-color.asp) of the [body element](http://www.w3schools.com/cssref/sel_element.asp) to `#F0F0F0` (light grey) or some other color that you will easily notice.
 1. In your `index.html` file, add the appropriate element to the `<head>` section to [link](http://www.w3schools.com/tags/tag_link.asp) your `index.css` to this page. Open your local `index.html` file in your browser to ensure that the body background color has changed.
 1. Add, commit, and push to GitHub.
