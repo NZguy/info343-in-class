@@ -1,0 +1,43 @@
+body{
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+h1{
+    font-weight: 100;
+    font-size: 60px;
+    margin: 0;
+    padding-top: 100px;
+}
+
+header{
+    background-image: linear-gradient(to bottom, #777, #333);
+    color: #FFF;
+}
+
+.container{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+svg{
+    width: 40px;
+    fill: cornflowerblue;
+}
+
+@media (min-width: 768px){
+    /* This is done to save bandwidth on mobile phones */
+    header{
+        background-image: url(../img/banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .row{
+        display: flex;
+    }
+
+    .col{
+        flex-grow: 1;
+        padding: 0px 10px;
+    }
+}
