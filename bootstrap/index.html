@@ -14,7 +14,7 @@
 </head>
 <body>
     <!--start of the responsive navigation bar-->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <!--container-fluid class adds a little padding, but doesn't constrain width-->
         <div class="container-fluid">
             <!--navbar header, which includes hamburger menu button and branding-->
@@ -24,6 +24,8 @@
                 navigation links you want to hide/show when the button is clicked.
                 `data-toggle` tells Bootstrap to toggle the `collapse` state,
                 thereby hiding/showing the element selected by `data-target`.
+                in this case, the selector is #site-nav-links, which selects
+                the element with id="site-nav-links" (just like CSS selectors)
                 -->
                 <button type="button" 
                     class="navbar-toggle collapsed" 
@@ -41,24 +43,28 @@
                 </button>
                 <!--branding content, which always remains visible-->
                 <a class="navbar-brand" href="#">
-                    My Awesome Web App
+                    Dawg Coffee
                 </a>
             </div>
 
             <!--navigation links, which are always visible on wide sceens,
             but go into a drop-down menu on narrow screens-->
             <div class="collapse navbar-collapse" id="site-nav-links">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Nav Link 1</a></li>
-                    <li><a href="#">Nav Link 2</a></li>
-                    <li><a href="#">Nav Link 3</a></li>
+                <!--the `navbar-right` class makes the links right-aligned on desktop-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">location</a></li>
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">events</a></li>
+                    <li><a href="#">order</a></li>
                 </ul>
             </div>
         
         </div> <!--end of .container-fluid-->
     </nav>
 
-    
+    <!--rest of the page content goes here-->
+
+
 
     <!--we add these script elements here so that they don't block page rendering
     and interaction. sometimes users just wants to click a link and move on,
