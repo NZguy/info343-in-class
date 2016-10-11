@@ -37,7 +37,7 @@ This is the one I came up with. Try to match this style as close as possible but
 
 ### Projects section
 
-The cards are expandable. To expand, click the '...' and the section that appears should have the project descriiption and what event/class/job/etc it was done for.
+The cards are expandable. To expand, click the '...' and the section that appears should have the project description and what event/class/job/etc it was done for.
 
 * Default state
 
