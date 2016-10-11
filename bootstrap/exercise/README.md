@@ -2,7 +2,7 @@
 
 Portfolios are a good way to showcase all the cool projects you've worked on.
 
-This is the one I came up with. Try to match this style as close as possible but fill it in with your own informatio, images, and colors.
+This is the one I came up with. Try to match this style as close as possible but fill it in with your own information, images, and colors.
 
 ![Portfolio example](img/full.png)
 
