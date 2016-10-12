@@ -20,8 +20,8 @@ it really easy to introduce mistakes.
 
 ///////////////////////////////////////////////////////////
 // VARIABLES and BASIC TYPES
-//JavaScript is loosely-typed; variables can take on
-//any type and change type during their lifetimes
+//JavaScript is loosely-typed; variables are untyped, can
+//take on any type, and change type during their lifetimes
 var x = 5;      //creates a variable named x, assigns numeric 5
 x = "Hello";    //assigns string "Hello"
 x = true;       //assigns boolean true
@@ -31,7 +31,7 @@ x = 3.14;       //assigns numeric 3.14
 
 
 //to view the value of something in the browser console,
-//use console.log(), and to group those things, use console.group()
+//use console.log(); to group log messages, use console.group()
 console.group("Variables and Basic Types");
 console.log("value of x is:", x);
 console.groupEnd();
@@ -63,9 +63,9 @@ console.log(s, "is", s.length, "characters long");
 s = s + ", YOU'RE FAB!";
 console.log(s);
 
-//strings have lots of built-in methods
+//strings have lots of built-in methods!
 //to convert to lower-case, use .toLowerCase()
-//this returns a new lower-case version of the string 
+//this returns a new lower-cased version of the string 
 console.log(s.toLowerCase());
 
 //see http://www.w3schools.com/jsref/jsref_obj_string.asp
@@ -129,7 +129,8 @@ console.log("value of '.foo' is", fooProp);
 
 //unlike Java objects, JavaScript objects are extensible;
 //you can add new properties after the object is created.
-//note that a value can be another object!
+//after all, it's really just a HashMap!
+//note that a value can be another object
 course.teacher = {
     firstName: "Dave",
     lastName: "Stearns"
@@ -141,7 +142,7 @@ delete course.teacher;
 console.log("after deleting property:", course);
 
 //you can test whether an object has a property using the
-//.hasOwnProperty() method that's on every object
+//.hasOwnProperty() method, which is on every object
 var propInObject = course.hasOwnProperty("foo");
 console.log("Is the 'foo' property in the object?", propInObject); 
 console.log("Is the 'year' property in the object?", course.hasOwnProperty("year")); 
@@ -156,6 +157,8 @@ console.group("PRACTICE: Objects");
 
 //now try adding a property named `web site` (with a space)
 //setting it to some string value...it's tricky...
+
+
 
 
 console.groupEnd();
@@ -173,8 +176,9 @@ console.log("quarters array:", quarters);
 
 //every array has a `.length` property, which tells you
 //how many elements are in the array
-//the %d is a replacement token, which will be replaced
-//with the result of the expression `quarters.length`
+//the %d in the log message is a replacement token, 
+//which will be replaced with the result of the expression
+//`quarters.length`.
 //%d expects a numeric value; use %s for a string value
 console.log("there are %d quarters", quarters.length);
 
@@ -184,10 +188,9 @@ quarters.push("Summer in a Parallel Dimension");
 console.log("quarters array:", quarters);
 
 //you can address a particular element by index using
-//this syntax, which looks a lot like the alternative
-//property addressing syntax from objects (see above)
+//this syntax, which is common for arrays
 var firstQuarter = quarters[0]
-console.log("first quarter:", firstQuarter);
+console.log("%s is the first quarter", firstQuarter);
 
 console.groupEnd();
 
@@ -195,7 +198,11 @@ console.group("PRACTICE: Arrays");
 //--PRACTICE--
 //create another array of playing card suits
 //(clubs, diamonds, hearts, spades)
+
+
 //then add a new element named "jokers"
+//afer adding it, access it in the array
+//and log it to the console
 
 
 
@@ -243,6 +250,7 @@ if (school.numStudents == "1000") {
 }
 
 if (school.numStudents === "1000") {
+    //this won't execute
     console.log("'1000' === 1000");
 }
 
@@ -259,12 +267,12 @@ for (idx = 0; idx < quarters.length; idx++) {
     console.log(quarters[idx]);
 }
 //NOTE: JavaScript variables are not block-scoped, so
-//if you declare `idx` within the for loop, it's actually
+//if you declare `idx` within the for statement, it's actually
 //declared in the current scope (in this case the global scope)
-//it's not scoped only to the for loop statement block
+//it's not scoped to the for loop statement block
 //as it would be in Java, C, or other block-scoped languages.  
 //ES2015 supports a new keyword `let` that is block-scoped
-//but you can guarnatee that the client's browser will
+//but you can't guarnatee that all clients' browsers will
 //support that yet.
 
 console.groupEnd();
@@ -289,7 +297,7 @@ function reverseString(s) {
 console.log(reverseString("Help I'm reversed!"));
 
 //but JavaScript functions are also values!
-//the funciton name can be used anywhere you can use a value
+//the funciton name can be used anywhere you can use a value:
 //variable assignment, function parameter, etc.
 var fn = reverseString;
 console.log(fn("I'm also reversed!"));
@@ -304,21 +312,20 @@ logMe("A test log message"); //note the date/time prefix that is added
 //if an object property can hold any value, then it
 //can also hold a function!
 var reallyBadCipher = {
-    encode: function(s) {
-        var cipherText = "";
+    transform: function(s, amount) {
+        var transText = "";
         var idx;
         for (idx = 0; idx < s.length; idx++) {
-            cipherText += String.fromCharCode(s.charCodeAt(idx) + 1);
+            transText += String.fromCharCode(s.charCodeAt(idx) + amount);
         }
-        return cipherText;
+        return transText;
+    },
+    encode: function(s) {
+        //the keyword `this` refers to the current object instance
+        return this.transform(s, 1);
     },
     decode: function(s) {
-        var plainText = "";
-        var idx;
-        for (idx = 0; idx < s.length; idx++) {
-            plainText += String.fromCharCode(s.charCodeAt(idx) - 1);
-        }
-        return plainText;
+        return this.transform(s, -1);
     }
 };
 
@@ -393,7 +400,7 @@ console.group("PRACTICE: Functional Programming");
 //use this function to create an array of random
 //numbers between 1 and 100, and practice using
 //.forEach() to iterate over it, .map() to transform
-//it into another array, doubling each number, and
+//it into another array while doubling each number, and
 //.reduce() to find the minimum value in the array
 //HINT: use the function you wrote above that returns
 //the minimum of the two numbers passed to it
@@ -404,12 +411,20 @@ function generateRandomNumbers(howMany, minimum, maximum) {
     var idx;
     var randNums = [];
     for (idx = 0; idx < howMany; idx++) {
-        randNums.push(Math.round((Math.random() * (maximum - minimum)) + minimum));
+        randNums.push(Math.floor((Math.random() * (maximum - minimum)) + minimum));
     }
     return randNums;
 }
 
 //>>> your code goes here!
+
+
+//now use the .sort() method on a generated array of random
+//numbers to sort them. Note that by default, sort will 
+//convert those numbers to strings and sort them alphabetically!
+//you need to supply a comparator function that comapres them
+//as numbers.
+//see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 
 
