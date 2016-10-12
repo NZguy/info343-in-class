@@ -29,10 +29,14 @@ x = null;       //assigns null
 x = undefined;  //assigns undefined (almost the same as null, but not quite)
 x = 3.14;       //assigns numeric 3.14
 
-//to view the value of something in the browser console,
-//use console.log()
-console.log("value of x is:", x);
 
+//to view the value of something in the browser console,
+//use console.log(), and to group those things, use console.group()
+console.group("Variables and Basic Types");
+console.log("value of x is:", x);
+console.groupEnd();
+
+console.group("PRACTICE: Variables and Basic Types");
 //--PRACTICE--
 //Create another variable named `y`, assign it the value
 //currently held in the variable `x`, and write the value
@@ -43,11 +47,13 @@ console.log("value of x is:", x);
 //what does x contain now? Write it to the console
 
 
+console.groupEnd();
 
 ///////////////////////////////////////////////////////////
 // STRINGS
 //JavaScript strings have a `.length` property that reports
 //the number of characters in the string (Unicode aware)
+console.groupCollapsed("Strings");
 var s = "Hello, World";
 console.log(s, "is", s.length, "characters long");
 s = "Hello, 世界";
@@ -64,7 +70,9 @@ console.log(s.toLowerCase());
 
 //see http://www.w3schools.com/jsref/jsref_obj_string.asp
 //for many other built-in methods on strings
+console.groupEnd();
 
+console.group("PRACTICE: Strings");
 //--PRACTICE--
 //create two new strings, `s2` and `s3`, initialize them
 //with some text, and then create another string `s4`
@@ -77,6 +85,8 @@ console.log(s.toLowerCase());
 var withSpaces = "    trim those spaces!     ";
 
 
+console.groupEnd();
+
 ///////////////////////////////////////////////////////////
 // OBJECTS (which are really just HashMaps)
 //Objects store an unorderd set of key/value pairs. 
@@ -84,6 +94,8 @@ var withSpaces = "    trim those spaces!     ";
 //All operations are extremely efficient; getting a value
 //for a key is practically constant time, regardless of
 //the number of key/value pairs in the Object.
+
+console.groupCollapsed("Objects");
 
 //to create an object, we use a special syntax:
 var course = {
@@ -134,6 +146,9 @@ var propInObject = course.hasOwnProperty("foo");
 console.log("Is the 'foo' property in the object?", propInObject); 
 console.log("Is the 'year' property in the object?", course.hasOwnProperty("year")); 
 
+console.groupEnd();
+
+console.group("PRACTICE: Objects");
 //--PRACTICE--
 //Create another object for one of your other courses
 //assigning it to a new variable named `course2`
@@ -143,11 +158,15 @@ console.log("Is the 'year' property in the object?", course.hasOwnProperty("year
 //setting it to some string value...it's tricky...
 
 
+console.groupEnd();
 
 ///////////////////////////////////////////////////////////
 // ARRAYS
 //Arrays store an ordered list of elements.
 //Elements can be of any type, including objects and arrays.
+
+console.groupCollapsed("Arrays")
+
 //To create an array, we use a special syntax:
 var quarters = ["Autumn", "Winter", "Spring", "Summer"];
 console.log("quarters array:", quarters);
@@ -170,7 +189,9 @@ console.log("quarters array:", quarters);
 var firstQuarter = quarters[0]
 console.log("first quarter:", firstQuarter);
 
+console.groupEnd();
 
+console.group("PRACTICE: Arrays");
 //--PRACTICE--
 //create another array of playing card suits
 //(clubs, diamonds, hearts, spades)
@@ -178,8 +199,13 @@ console.log("first quarter:", firstQuarter);
 
 
 
+console.groupEnd();
+
 ///////////////////////////////////////////////////////////
 // CONDITIONALS, TRUTHINESS and FALSINESS
+
+console.groupCollapsed("Conditionals, Truthiness, and Falsiness");
+
 //Like Java you can execute code only when an expression
 //evaluates to true or false, but JavaScript will auto-coerce
 //any type to a boolean if it needs to. These are the rules:
@@ -209,8 +235,22 @@ console.log("Number of students: " + (school.numStudents || "unknown"));
 school.numStudents = 1000; 
 console.log("Number of students: " + (school.numStudents || "unknown"));
 
+//you can prohibit this auto-coercion by using the
+//=== operator to test against something explicit
+//it will return false if the two types are not the same
+if (school.numStudents == "1000") {
+    console.log("'1000' == 1000");
+}
+
+if (school.numStudents === "1000") {
+    console.log("'1000' === 1000");
+}
+
+console.groupEnd();
+
 ///////////////////////////////////////////////////////////
 // BASIC LOOPS
+console.groupCollapsed("Basic Loops");
 //JavaScript has the same basic looping constructs as Java
 //so we can iterate over arrays using a standard `for` loop 
 console.log("all quarters:");
@@ -227,9 +267,11 @@ for (idx = 0; idx < quarters.length; idx++) {
 //but you can guarnatee that the client's browser will
 //support that yet.
 
+console.groupEnd();
+
 ///////////////////////////////////////////////////////////
 // FUNCTIONS
-//JavaScript 
+console.groupCollapsed("Functions");
 //You can define your own functions in JavaScript, though
 //just like variables, the parameters are loosely-typed
 
@@ -284,6 +326,9 @@ var encrypted = reallyBadCipher.encode("This is a test message");
 console.log(encrypted, "=", reallyBadCipher.decode(encrypted));
 
 //and yes, even array elements can be functions!
+console.groupEnd();
+
+console.group("PRACTICE: Functions");
 
 //--PRACTICE--
 //Write a function that accepts two numeric arguments
@@ -292,9 +337,11 @@ console.log(encrypted, "=", reallyBadCipher.decode(encrypted));
 //with various numbers to test it.
 
 
+console.groupEnd();
 
 ///////////////////////////////////////////////////////////
 // FUNCTIONAL PROGRAMMING
+console.groupCollapsed("Functional Programming");
 //So if functions are values, you can also pass them as
 //parameters to another function. This enables to code in
 //a different style. Instead of Object-Oriented Programming
@@ -338,3 +385,32 @@ function addReducer(sum, num) {
 //in this case, the initial value is 0
 var sum = myNumbers.reduce(addReducer, 0);
 console.log("%s=%d", myNumbers.join("+"), sum);
+
+console.groupEnd();
+
+console.group("PRACTICE: Functional Programming");
+//--PRACTICE--
+//use this function to create an array of random
+//numbers between 1 and 100, and practice using
+//.forEach() to iterate over it, .map() to transform
+//it into another array, doubling each number, and
+//.reduce() to find the minimum value in the array
+//HINT: use the function you wrote above that returns
+//the minimum of the two numbers passed to it
+
+function generateRandomNumbers(howMany, minimum, maximum) {
+    minimum = minimum || 1;     //default minimum to 1
+    maximum = maximum || 100;   //default maximum to 100
+    var idx;
+    var randNums = [];
+    for (idx = 0; idx < howMany; idx++) {
+        randNums.push(Math.round((Math.random() * (maximum - minimum)) + minimum));
+    }
+    return randNums;
+}
+
+//>>> your code goes here!
+
+
+
+console.groupEnd();
