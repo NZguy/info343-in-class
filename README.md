@@ -14,7 +14,7 @@ git config --global user.email your-netid@uw.edu
 Clone your forked repo to your machine:
 
 ```bash
-git clone https://your-cloned-repo-url
+git clone https://your-forked-in-class-repo-url
 ```
 
 Add a remote to my original repo and pull any updates I've made to the `master` branch:
