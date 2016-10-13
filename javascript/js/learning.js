@@ -42,10 +42,13 @@ console.group("PRACTICE: Variables and Basic Types");
 //currently held in the variable `x`, and write the value
 //of `y` to the console log
 
+var y = x;
+console.log(y);
 
 //now assign `y` the numeric value 10
 //what does x contain now? Write it to the console
-
+var y = 10;
+console.log(x);
 
 console.groupEnd();
 
@@ -78,12 +81,16 @@ console.group("PRACTICE: Strings");
 //with some text, and then create another string `s4`
 //and assign it the concatenation of `s2` and `s3`
 //then write it to the console so you can verify it worked.
-
+var s2 = "some text, ";
+var s3 = "some more text";
+var s4 = s2+s3;
+console.log(s4);
 
 //use the `.trim()` method to remove the leading and
 //trailing white space from this string
 var withSpaces = "    trim those spaces!     ";
-
+var trimmedString = withSpaces.trim();
+console.log(trimmedString);
 
 console.groupEnd();
 
@@ -138,7 +145,7 @@ course.teacher = {
 console.log("after adding property:", course);
 
 //you can remove properties using delete
-delete course.teacher;
+delete course.teacher; //why does this delete the previous one from log?
 console.log("after deleting property:", course);
 
 //you can test whether an object has a property using the
@@ -155,11 +162,18 @@ console.group("PRACTICE: Objects");
 //assigning it to a new variable named `course2`
 //use console.log() to view it in the browser console
 
+var course2 = {
+    curriculum: "INFO",
+    number: 466,
+    name: "Immersive Environments",
+    awesome: true
+};
+console.log(course2);
+
 //now try adding a property named `web site` (with a space)
 //setting it to some string value...it's tricky...
 
-
-
+course2["Web Site"] = "i466.duncanandrew.com" 
 
 console.groupEnd();
 
@@ -189,7 +203,7 @@ console.log("quarters array:", quarters);
 
 //you can address a particular element by index using
 //this syntax, which is common for arrays
-var firstQuarter = quarters[0]
+var firstQuarter = quarters[0];
 console.log("%s is the first quarter", firstQuarter);
 
 console.groupEnd();
@@ -199,12 +213,14 @@ console.group("PRACTICE: Arrays");
 //create another array of playing card suits
 //(clubs, diamonds, hearts, spades)
 
+var suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 
 //then add a new element named "jokers"
 //afer adding it, access it in the array
 //and log it to the console
 
-
+suits.push("Jokers");
+console.log(suits[suits.length - 1]);
 
 console.groupEnd();
 
@@ -238,6 +254,7 @@ else {
 
 //we can also take advantage of short-circuiting boolean
 //expressions to provide a default value
+// if school.numStudents is falsy then defaults to unknown
 console.log("Number of students: " + (school.numStudents || "unknown"));
 school.numStudents = 1000; 
 console.log("Number of students: " + (school.numStudents || "unknown"));
@@ -343,6 +360,24 @@ console.group("PRACTICE: Functions");
 //if they are equal to each other. Then call it a few times
 //with various numbers to test it.
 
+function getMin(first, second){
+    if(first < second){
+        return first;
+    }
+    if(second < first){
+        return second;
+    }
+    else{
+        return first;
+    }
+}
+
+function minimum(n1, n2){
+    // if n2 is smaller than n1 return 2n, else return n1
+    return n2 < n1 ? n2 : n1;
+}
+console.log(getMin(4,7), getMin(9,3), getMin(5,5));
+console.log(minimum(4,7), getMin(9,3), getMin(5,5));
 
 console.groupEnd();
 
@@ -418,6 +453,14 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 
 //>>> your code goes here!
 
+var randomArray = generateRandomNumbers(24, 1, 100);
+console.log(randomArray);
+randomArray.forEach(logMe);
+//reduce inputs the current element and the last returned element
+//from the function to the function
+var doubleRandom = randomArray.map(function(n){ return n*2; });
+console.log(doubleRandom);
+console.log(doubleRandom.reduce(minimum, 100));
 
 //now use the .sort() method on a generated array of random
 //numbers to sort them. Note that by default, sort will 
@@ -426,6 +469,10 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 //as numbers.
 //see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
-
+function compareInts(a, b){
+    return a < b ? -1 : a > b ? 1 : 0; //lol it worked
+}
+var sortedRandom = randomArray.sort(compareInts);
+console.log(sortedRandom);
 
 console.groupEnd();
