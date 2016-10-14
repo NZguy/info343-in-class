@@ -81,6 +81,7 @@ console.group("PRACTICE: Strings");
 //with some text, and then create another string `s4`
 //and assign it the concatenation of `s2` and `s3`
 //then write it to the console so you can verify it worked.
+
 var s2 = "some text, ";
 var s3 = "some more text";
 var s4 = s2+s3;
@@ -161,6 +162,9 @@ console.group("PRACTICE: Objects");
 //Create another object for one of your other courses
 //assigning it to a new variable named `course2`
 //use console.log() to view it in the browser console
+var course2 = {
+
+};
 
 var course2 = {
     curriculum: "INFO",
@@ -304,6 +308,7 @@ console.groupCollapsed("Functions");
 function reverseString(s) {
     var reversed = "";
     var idx;
+    s = String(s);
     for (idx = s.length-1; idx >= 0; idx--) {
         //short form of reversed = reversed + s.charAt(idx)
         reversed += s.charAt(idx);
@@ -452,6 +457,8 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 }
 
 //>>> your code goes here!
+var ranNums = generateRandomNumbers(100);
+ranNums.forEach(logMe);
 
 var randomArray = generateRandomNumbers(24, 1, 100);
 console.log(randomArray);
