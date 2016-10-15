@@ -1,0 +1,28 @@
+ul {
+    margin-top: 1em;
+}
+
+.task {
+    cursor: pointer;
+}
+
+.done {
+    color: #AAA;
+    text-decoration: line-through;
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    display: flex;
+}
+
+.form-group:first-of-type {
+    flex-grow: 1;
+}
+
+.form-group:last-of-type {
+    flex-grow: 0;
+}
