@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>AJAX</title>
+	<link rel="icon" href="img/page-icon.png">
+
+	<!--Materialize.css stylesheet-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">	
+	
+</head>
+<body>
+	<header class="container">
+		<h1>Search Music</h1>
+	</header>
+
+	<main class="container">
+		<p>
+			<input type="search"
+				id="music-search-input"
+				placeholder="enter a song name"
+				autofocus
+				reqiured>
+		</p>
+
+
+		<div id="query-results">
+			<!--we will add elements here via JavaScript-->
+		</div>
+	</main>	
+
+
+
+	<!--jQuery library, required by Materialize.css-->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	
+	<!--Materialize.css JavaScript library-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+	<!--.fetch() polyfill for browsers that don't yet support .fetch() (mainly iOS Safari)-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
+	
+	<!--our application script-->
+	<script src="js/app.js"></script>
+</body>
+</html>
