@@ -7,36 +7,49 @@
 	<link rel="icon" href="img/page-icon.png">
 
 	<!--Material Design Lite (MDL) stylesheet and related fonts-->
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-
+	
+	<!--animate.css stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	
 	<!--our own stylesheet-->
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<header>
 		<div class="container">
-			<h1>Splotify</h1>
+			<h1>Stainify</h1>
+
+			<!--this is a spinner icon that we show while we are fetching data from Spotify-->
+			<div class="mdl-spinner mdl-js-spinner is-active hidden"></div>
 		</div>
 	</header>
 
 	<main>
 		<div class="container">
-			<!--MDL input block: label becomes placeholder text-->
-			<div class="mdl-textfield mdl-js-textfield">
-				<input type="text"
-					id="music-search-input"
-					class="mdl-textfield__input">
-				<label for="music-search-input" class="mdl-textfield__label">enter a song name</label>
-			</div>
 
-			<!--this is a spinner icon that we show while we are fetching data from Spotify-->
-			<div id="fetch-feedback" class="mdl-spinner mdl-js-spinner is-active hidden"></div>
+			<form class="search-form">
+				<!--MDL input block: label content becomes placeholder text-->
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input type="text"
+						id="search-input"
+						class="mdl-textfield__input">
+					<label for="search-input" class="mdl-textfield__label">what do you want to hear?</label>
+				</div>
 
-			<div id="query-results">
+				<button type="submit" 
+					class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored mdl-button--icon">
+					<i class="material-icons">search</i>
+				</button>
+			</form>
+
+
+			<div class="query-results">
 				<!--we will add elements here via JavaScript-->
 			</div>
+
 		</div>
 	</main>	
 
