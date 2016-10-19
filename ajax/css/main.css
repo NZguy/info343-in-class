@@ -1,0 +1,23 @@
+/*used to constraint content width*/
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/*MDL text fields are only 300px wide by default, so expand to 100%*/
+.mdl-textfield {
+    width: 100%;
+}
+
+/*used to hide/show the ajax feedback spinner*/
+.hidden {
+    display: none;
+}
+
+/*constraint width and height of preview images, and make them look clickable*/
+#query-results img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}

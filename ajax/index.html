@@ -6,39 +6,47 @@
 	<title>AJAX</title>
 	<link rel="icon" href="img/page-icon.png">
 
-	<!--Materialize.css stylesheet-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">	
-	
+	<!--Material Design Lite (MDL) stylesheet and related fonts-->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+
+	<!--our own stylesheet-->
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<header class="container">
-		<h1>Search Music</h1>
+	<header>
+		<div class="container">
+			<h1>Splotify</h1>
+		</div>
 	</header>
 
-	<main class="container">
-		<p>
-			<input type="search"
-				id="music-search-input"
-				placeholder="enter a song name"
-				autofocus
-				reqiured>
-		</p>
+	<main>
+		<div class="container">
+			<!--MDL input block: label becomes placeholder text-->
+			<div class="mdl-textfield mdl-js-textfield">
+				<input type="text"
+					id="music-search-input"
+					class="mdl-textfield__input">
+				<label for="music-search-input" class="mdl-textfield__label">enter a song name</label>
+			</div>
 
+			<!--this is a spinner icon that we show while we are fetching data from Spotify-->
+			<div id="fetch-feedback" class="mdl-spinner mdl-js-spinner is-active hidden"></div>
 
-		<div id="query-results">
-			<!--we will add elements here via JavaScript-->
+			<div id="query-results">
+				<!--we will add elements here via JavaScript-->
+			</div>
 		</div>
 	</main>	
 
 
 
-	<!--jQuery library, required by Materialize.css-->
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	
-	<!--Materialize.css JavaScript library-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+	<!--Material Design Lite JavaScript library-->
+	<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>	
 
-	<!--.fetch() polyfill for browsers that don't yet support .fetch() (mainly iOS Safari)-->
+	<!--.fetch() polyfill for browsers that don't yet support it yet (e.g., Safari)-->
+	<!--see http://caniuse.com/#feat=fetch-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
 	
 	<!--our application script-->
