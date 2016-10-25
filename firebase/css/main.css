@@ -7,7 +7,7 @@
     list-style-position: inside;
 }
 
-.task-list li {
+.task-list .task-title {
     cursor: pointer;
 }
 
@@ -21,4 +21,9 @@
 .done .task-creation {
     color: #AAA;
     text-decoration: line-through;
+}
+
+.done .glyphicon {
+    cursor: pointer;
+    margin-left: 1rem;
 }
