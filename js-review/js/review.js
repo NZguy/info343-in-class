@@ -51,21 +51,17 @@ console.log(plainText, "=", badlyEncryptedText, "=", badlyDecryptText(badlyEncry
 
 //functions are values in JavaScript, so a
 //function name can be used wherever a value can
-//be used: for example, assigning to a variable
-var fn = offsetText;
-badlyEncryptedText = fn(plainText, 10);
-console.log(plainText, "=", badlyEncryptedText, "=", fn(badlyEncryptedText, -10)); 
-
-//since a function parameter is just like a variable
-//you can also pass a function to another function
-//as a paramter
+//be used: for example, you can pass a function
+//as a parmeter to another function
 
 /**
- * @callback formatter
+ * @callback formatterCallback
  * @param {any} value
  * @returns {string} the formatted value 
  */
 
+//several "formatter" functions that can format
+//a value in different ways 
 function formatAsDate(value) {
     return moment(value).format("l");
 }
@@ -87,7 +83,7 @@ function formatAsString(value) {
  * logValue() formats `value` using the `formatter`
  * function and writes the result to console.log()
  * @param {any} value the value to log
- * @param {formatter} [formatter] a function that can
+ * @param {formatterCallback} [formatter] a function that can
  *   format `value` for the log
  */
 function logValue(value, formatter) {
