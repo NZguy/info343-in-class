@@ -261,6 +261,17 @@ females.sort(function(record1, record2) {
 var leastPopFemRecs = females.slice(0,10);
 console.log("least popular female name records:", leastPopFemRecs);
 
+//every array also has a .forEach() method, which will
+//call the supplied function once for each element,
+//passing that element as the first parameter
+var leastPopFemNames = [];
+leastPopFemRecs.forEach(function(record) {
+    leastPopFemNames.push(record.name);
+});
+
+//but there's a more elegant way to extract just
+//a portion of each array element...
+
 //every array also has a `.map()` method, which will
 //return a new array containing the same number of elements
 //but each element will be transformed using your 
@@ -268,7 +279,7 @@ console.log("least popular female name records:", leastPopFemRecs);
 //this transformation function returns only the .name
 //property from each record, so the returned array will
 //contain only the names (it will be an array of strings) 
-var leastPopFemNames = leastPopFemRecs.map(function(record) {
+leastPopFemNames = leastPopFemRecs.map(function(record) {
     //return just the name property
     return record.name;
 });
@@ -284,6 +295,7 @@ function mapArray(array, transFn) {
     }
     return mappedElems;
 }
+//but you don't have to implement it--just use the .map() method!
 
 //arrays also have a `.join()` method, which will join all
 //of the elements into one single output string, using
@@ -321,6 +333,24 @@ console.log("Total count", formatAsNumber(totalCount));
  * write that array of 10 strings to the console as
  * a comma, delimited list. To sort descending,
  * just reverse the logic in your compare function.
+ */
+
+
+
+/**
+ * PRACTICE
+ * There are many names in the BABYNAMES array that
+ * were used for both females and males, so the same
+ * name appears twice, once with a count for females
+ * and once with a count for males. 
+ * Given that the keys of a JavaScript object are 
+ * a unique set, and given that you can associate 
+ * a value with each of those keys, write the code
+ * to extract the distinct set of names, and as
+ * you do so, calculate the total number of babies
+ * who were given that name. Then sort the resulting
+ * data by total count descending, slice off the 
+ * top 10 and write those to the console.
  */
 
 

@@ -21,6 +21,9 @@
  * `document.querySelectorAll()` method. 
  */
 
+//get a reference to the <div id="report"> element
+var divReport = document.getElementById("report");
+
 //get a reference to the "Click Me!" button, which has a
 //style class on it named `btn-click-me`
 //just as in CSS, the selector would be `.btn-click-me`
@@ -29,10 +32,29 @@ var clickMeButton = document.querySelector(".btn-click-me");
 //once you have a reference to an element, you can ask
 //the browser to call a function whenever that element
 //raises a particular event. If the user clicks an
-//element, that element will raise its "click" event
+//element, that element will raise its "click" event.
+//Use `.addEventListener()` to add a function to be
+//called whenever a particular event is raised
 clickMeButton.addEventListener("click", function() {
     //this function will be called every time
     //the user clicks the button
     alert("You clicked me!");
 });
 
+
+/**
+ * PRACTICE:
+ */
+function render(records) {
+    //`records` is an array of objects
+    //render this array a full <table> element, 
+    //using the property names of the first object
+    //in the array as the column headers
+    //create a table row for each element in the
+    //array, show that object's data in the table cells
+
+    //your code here...
+
+}
+
+render(BABYNAMES.slice(0,10));
