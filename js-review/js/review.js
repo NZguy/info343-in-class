@@ -110,10 +110,8 @@ logValue("2016-10-27", formatAsDate);
 var someNumber = 123456789;
 //logValue(...)
 
-
-
-
-
+logValue(someNumber, formatAsNumber);
+logValue(someNumber, formatAsCurrency);
 
 console.groupEnd();
 
@@ -135,7 +133,8 @@ var course = {
     curriculum: "INFO",
     num: 343,
     section: "D",
-    title: "Client-Side Web Development"
+    title: "Client-Side Web Development",
+    foobar: ""
 };
 
 console.log("I'm taking", course.curriculum, course.num);
@@ -190,11 +189,9 @@ console.log("property names:", propNames);
  * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
  */
 
-
-
-
-
-
+propNames.forEach(function(name) {
+    console.log(name, "=", course[name]);
+});
 
 
 //FYI, this is essentially how the .forEach()
@@ -351,7 +348,18 @@ console.log("Total count", formatAsNumber(totalCount));
  * just reverse the logic in your compare function.
  */
 
+males.sort(function(rec1, rec2) {
+    return rec2.count - rec1.count;
+});
 
+var mostPopMaleRecs = males.slice(0,10);
+console.log("most popular male records", mostPopMaleRecs);
+var mostPopMaleNames = mostPopMaleRecs.map(function(rec) {
+    return rec.name;
+});
+
+console.log("most popular male names as array", mostPopMaleNames);
+console.log("most popular male names as single string", mostPopMaleNames.join(", "));
 
 /**
  * PRACTICE
@@ -372,5 +380,18 @@ console.log("Total count", formatAsNumber(totalCount));
 
 
 
+//Closure Example
+function compareByProp(propName) {
+
+    return function(rec1, rec2) {
+        if (typeof rec1[propName] == "string") {
+            return rec1[propName].localeCompare(rec2[propName]);    
+        } else {
+            return rec1[propName] - rec2[propName];
+        }
+    }
+}
+var compareFn = compareByProp("count");
+BABYNAMES.sort(compareFn);
 
 console.groupEnd();
