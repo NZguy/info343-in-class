@@ -194,6 +194,21 @@ console.log("property names:", propNames);
 
 
 
+
+
+
+//FYI, this is essentially how the .forEach()
+//method on arrays is implemented:
+function forEachArrayElement(array, fn) {
+    var idx;
+    for (idx = 0; idx < array.length; idx++) {
+        //the callback is actually passed three
+        //parameters, but your function can ignore
+        //any of those that you don't need
+        fn(array[idx], idx, array);
+    }
+}
+
 console.groupEnd();
 
 /**
