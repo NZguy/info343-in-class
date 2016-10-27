@@ -153,13 +153,14 @@ console.log("Alternative syntax: I'm taking", course[propName1], course[propName
 if (course.hasOwnProperty("title")) {
     console.log(course.title);
 }
-//second; test the value for the property
+//second: test the value for the property,
 //asking for a property that doesn't yet exist
 //in the HashMap will return `undefined`, which
 //will coerce to false
 if (course.foobar) {
     //this won't ever run because there is no
-    //`foobar` key in the HashMap
+    //`foobar` key in the HashMap, so 
+    //course.foobar returns undefined
     console.log(course.foobar);
 }
 
@@ -217,10 +218,14 @@ console.log("BABYNAMES has %s elements",
 //that pass your testing function. Your testing 
 //function should return `true` if the element should
 //be in the returned filtered array, or `false` if not
+
+//the testing function you pass to .filter() 
+//is called once for each element in the array, 
+//and it's passed that current element
+//as the first parameter--here we call it `record`
+//but since it's our parameter, we can call it
+//whatever we want to.
 var females = BABYNAMES.filter(function(record) {
-    //this function is called once for each element
-    //in the array, and it's passed the current element
-    //as the first parameter--here we call it `record`
     return "F" == record.sex;
 });
 
@@ -244,7 +249,7 @@ console.log("There are %s female names and %s males names",
 //let's sort the females and males arrays by count ascending
 //(least popular names at the top)
 females.sort(function(record1, record2) {
-    //since count is a number, we can just subtract them
+    //since count is a number, we can just subtract them;
     //if record1.count is < than record2.count, the result
     //will be negative; if they are equal, the result will
     //be 0; if record1.count > record2.count, the result
