@@ -16,6 +16,43 @@
  
  //part 1 code
 
+var weatherAPI = '4d6fa9d9340190ba83f985f8414982eb';
+var city = '';
+
+fetch('https://freegeoip.net/json/', {
+  method: 'get'
+})
+.then(function(response){
+  console.log(response);
+  return response.json();
+})
+.then(function(result){
+  console.log(result);
+  city = result.city;
+  shit();
+})
+.catch(function(err){
+  console.log(err);
+});
+
+
+function shit(){
+  fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=' + weatherAPI, {
+  method: 'get'
+  })
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(result){
+    console.log(result);
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+}
+
+
+
  /*
   Part 2: Show the difference between parallel and serial promises
 
