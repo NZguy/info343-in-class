@@ -377,21 +377,109 @@ console.log("most popular male names as single string", mostPopMaleNames.join(",
  * top 10 and write those to the console.
  */
 
+//for you to do...
 
 
 
-//Closure Example
-function compareByProp(propName) {
+/**
+ * ADVANCED MATERIAL
+ * If the following confuses you, don't worry about it.
+ * You don't need to know how to do this in order to
+ * finish the challenges.
+ */
 
-    return function(rec1, rec2) {
-        if (typeof rec1[propName] == "string") {
-            return rec1[propName].localeCompare(rec2[propName]);    
-        } else {
-            return rec1[propName] - rec2[propName];
-        }
+/**
+ * Closures are confusing, but they can be very powerful.
+ * We can write just a few functions and chain them 
+ * together to do exactly what we did above, but with
+ * a lot less code. For example, suppose we had the 
+ * following function defined in a reusable code library:
+ */
+
+/**
+ * testProp() returns a function that can be used
+ * with array .filter(). The returned test function
+ * will test the property specified in `propName` 
+ * against the value specified in `value`.
+ */
+function testProp(propName, value) {
+    return function(record) {
+        return record[propName] == value;
     }
 }
-var compareFn = compareByProp("count");
-BABYNAMES.sort(compareFn);
+
+/**
+ * compareByNumProp() returns a function that can
+ * be used with array .sort(). The returned compare
+ * function will compare as numbers the values of the 
+ * properties specified in `propName`
+ */
+function compareByNumProp(propName) {
+    return function(record1, record2) {
+        return record1[propName] - record2[propName];
+    }
+}
+
+/**
+ * compareByStringProp() returns a function that can
+ * be used with array .sort(). The returned compare
+ * function will compare as strings the values of the 
+ * properties specified in `propName`
+ */
+function compareByStringProp(propName) {
+    return function(record1, record2) {
+        return record1[propName].localeCompare(record2[propName]);
+    }
+}
+
+/**
+ * descending() returns a sort compare function that
+ * reverses the result of the comparefunction passed 
+ * as `compareFn`. If `compareFn` returns a positive 
+ * value, the returned compare function switches that
+ * to negative, and vice-versa.
+ */
+function descending(compareFn) {
+    return function(record1, record2) {
+        return -(compareFn(record1, record2));
+    }
+}
+
+/**
+ * extractProp() returns a transform function that cam 
+ * be used with array .map(). The returned transform
+ * function will return just the value for the property
+ * name provided as `propName`
+ */
+function extractProp(propName) {
+    return function(record) {
+        return record[propName];
+    }
+}
+
+/**
+ * Now we can chain those functions together to do
+ * everything we did above in one line of code!
+ */
+
+//write the top 10 males names to the console
+console.log("top 10 males names (functional)", 
+    BABYNAMES.filter(testProp("sex", "M"))
+        .sort(descending(compareByNumProp("count")))
+        .map(extractProp("name"))
+        .slice(0,10)
+        .join(", ")
+);
+
+//write the top 10 female names to the console
+console.log("top 10 female names (functional)", 
+    BABYNAMES.filter(testProp("sex", "F"))
+        .sort(descending(compareByNumProp("count")))
+        .map(extractProp("name"))
+        .slice(0,10)
+        .join(", ")
+);
+
+// ~ fin ~
 
 console.groupEnd();
