@@ -5,6 +5,10 @@ import React from "react";
 import "whatwg-fetch";
 
 //import our CSS file
+//Webpack will actually transform this
+//into an inline <style> element in the 
+//<head> section so that the browser doesn't 
+//have to make a separate network request!
 import "./css/main.css";
 
 const spotifySearchURL = "https://api.spotify.com/v1/search?type=track&q=";
