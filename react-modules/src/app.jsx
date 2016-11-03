@@ -32,6 +32,7 @@ import "./css/main.css";
 const githubSearchURL = "https://api.github.com/search/repositories?per_page=30&q=";
 
 import SearchForm from "./search-form.jsx";
+import Repo from "./repo.jsx";
 
 export default class extends React.Component {
     constructor(props) {
@@ -54,12 +55,33 @@ export default class extends React.Component {
             }));
     }
 
+    handleNextPage(){
+        var nextPageNum = this.state.page + 1;
+        fetch(githubSearchURL + this.state.query + "&page=" + nextPageNum)
+            .then(response => response.json())
+            .then(data => this.setState({
+                data: data,
+                query: this.state.query,
+                page: nextPageNum
+            }));
+    }
+
     render() {
         return (
             <main className="container">
                 <h1>Hello React!</h1>
-                <SearchFrom placeholder="name of repo"
+                <SearchForm placeholder="name of repo"
                     onSearch={query => this.handleSearch(query)} />
+                    <p>{this.state.data.total_count} repos found</p>
+                    <p>
+                        <button className="btn btn-default"
+                            onClick={() => this.handleNextPage()}>
+                            Next Page
+                        </button>
+                    </p>
+                    {
+                        this.state.data.items.map(repo => <Repo key={repo.id} repo={repo}/>)
+                    }
             </main>
         );
     }
