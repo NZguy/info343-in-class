@@ -5,7 +5,7 @@ const SRC_DIR = path.join(__dirname, "src");
 const DIST_DIR = path.join(__dirname, "dist");
 
 module.exports = {
-    devtool: "cheap-eval-source-map",
+    devtool: "source-map",
     entry: [
         "webpack-dev-server/client?http://localhost:3000",
         "webpack/hot/only-dev-server",
