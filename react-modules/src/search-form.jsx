@@ -34,7 +34,7 @@ export default class extends React.Component {
                 <div className="input-group">
                     <input type="text" className="form-control"
                             value={this.state.query} 
-                            placeholder={this.props.placeholder}
+                            placeholder={this.props.placeholder || "what are you looking for?"}
                             onChange={event => this.handleChange(event)} />
                     <span className="input-group-btn">
                         <button type="submit" className="btn btn-primary" 
