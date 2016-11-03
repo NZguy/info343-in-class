@@ -12,7 +12,6 @@ class NameForm extends React.Component{
 
     handleChange(event){
         this.setState({name: event.target.value});
-        // What does the below line do?
         this.props.onChange(event.target.value);
     }
 

@@ -4,3 +4,4 @@ node_modules
 .idea
 lab/dom/js/main1.js
 lab/dom/index1.html
+npm-debug.log
