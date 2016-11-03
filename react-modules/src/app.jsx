@@ -9,7 +9,9 @@ const githubSearchURL = "https://api.github.com/search/repositories?q=";
 export default class extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {tracks: []};
+        this.state = {
+            data: {}
+        };
     }
 
     render() {
