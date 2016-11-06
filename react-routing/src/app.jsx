@@ -1,18 +1,4 @@
-//import the React class from the `react` module
-//this module is already listed as a dependency
-//in our package.json file, so after running
-//`npm install`, the "react" module will be in
-//our node_modules directory, so we can import it
-//simply by using the module name
 import React from "react";
-
-//polyfill for the fetch() API so that we can use
-//it in Safari and older browsers
-//this module was already included in our package.json
-//so after you execute `npm install` this module will
-//be in the node_modules directory, so we can load it
-//simply by importing it's module name
-import "whatwg-fetch";
 
 //import our CSS file
 //Webpack will actually merge the contents
@@ -33,9 +19,13 @@ export default class extends React.Component {
 
     render() {
         return (
-            <main className="container">
-                <h1>Hello React!</h1>
-            </main>
+            <div>
+                <main>
+                    <div className="container">
+                        <h1>Hello React!</h1>
+                    </div>
+                </main>
+            </div>
         );
     }
 }
