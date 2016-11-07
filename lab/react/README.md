@@ -12,6 +12,17 @@ For example of how we have been viewing react, look in the 'react', 'react-ajax'
 
 Starter files will be available and will inlude more specific instuctions & tips.
 
+###Starting development
+Pop open your terminal and navigate to 'lab/react/'. After that follow these commands:
+
+```bash
+$ npm install
+$ npm start
+```
+
+The first will download all the dependencies mentioned in the 'package.json' file. Then 'npm start' will fire up our web server and webpack. 
+After that, go to 'http://localhost:3000' in your browser.
+
 ####Part 1: Get and display data
 For this part you will be getting weather data from OpenWeatherMap for Seattle and then display it on the page.
 ![part 1](img/part1.png)
