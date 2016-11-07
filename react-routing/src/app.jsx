@@ -21,6 +21,7 @@ import "./css/main.css";
 import "whatwg-fetch";
 
 const APIKEY = "...paste your api key here...";
+const DISCOVER_API = "https://api.themoviedb.org/3/discover/movie?api_key=" + APIKEY;
 
 export default class extends React.Component {
     constructor(props) {
