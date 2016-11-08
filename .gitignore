@@ -5,3 +5,6 @@ node_modules
 lab/dom/js/main1.js
 lab/dom/index1.html
 npm-debug.log
+lab/react/src/appSolution.jsx
+lab/react/src/SearchCitySolution.jsx
+lab/react/src/WeatherCardSolution.jsx
