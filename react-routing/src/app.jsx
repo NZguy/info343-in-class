@@ -12,6 +12,8 @@ import React from "react";
 //directory 
 import "./css/main.css";
 
+import {Link, IndexLink} from "react-router";
+
 export default class extends React.Component {
     constructor(props) {
         super(props);
@@ -20,8 +22,20 @@ export default class extends React.Component {
     render() {
         return (
             <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <IndexLink to="/" 
+                            activeClassName="active">Product</IndexLink>
+                        </li>
+                        <li>
+                            <Link to="/cart" 
+                            activeClassName="active">Cart</Link>
+                        </li>
+                    </ul>
+                </nav>
                 <main>
-                    <h1>Hello React!</h1>
+                    {this.props.children} {/*Where the routed elements are placed*/}
                 </main>
             </div>
         );
