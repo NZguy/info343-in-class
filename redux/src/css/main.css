@@ -23,8 +23,8 @@ button:hover {
     background: rgba(158,158,158,.2);
 }
 
-button:active {
-    background-color: rgba(158,158,158,.4);
+button:focus {
+    background-color: rgba(0,0,0,.12);
 }
 
 button.raised {
