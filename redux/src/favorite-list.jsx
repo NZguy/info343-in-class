@@ -1,12 +1,21 @@
 import React from "react";
 
 import UserCard from "./user-card.jsx";
+import {store, removeFavorite} from "./shared-state.js";
 
 export default class extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = store.getState();
+    }
+
+    componentDidMount() {
+        this.unsub = store.subscribe(() => this.setState(store.getState()));
+    }
+
+    componentWillUnmount() {
+        this.unsub();
     }
 
     render() {
@@ -15,7 +24,9 @@ export default class extends React.Component {
             userCards = this.state.favorites.map(record => 
                 <UserCard key={record.id} 
                     user={record}>
-                    <button>Remove</button>
+                    <button onClick={() => store.dispatch(removeFavorite(record.id))}>
+                        Remove
+                    </button>
                 </UserCard>);
         }
         return (
