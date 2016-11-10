@@ -1,7 +1,6 @@
 import React from "react";
 
 import UserCard from "./user-card.jsx";
-import {store, removeFavorite} from "./shared-state.js";
 
 export default class extends React.Component {
     constructor(props) {
