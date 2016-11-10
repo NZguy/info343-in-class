@@ -1,0 +1,105 @@
+/* app-specific styles go here */
+
+body {
+    font-family: "Hevletica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    background: 0;
+    cursor: pointer;
+    font-family: "Hevletica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    box-shadow: .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1)
+}
+
+button:hover {
+    background: rgba(158,158,158,.2);
+}
+
+button:focus {
+    background-color: rgba(0,0,0,.12);
+}
+
+button.raised {
+    background: rgba(158,158,158,.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+button.raised:active {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+    background-color: rgba(158,158,158,.4);    
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+nav {
+    background-color: #F0F0F0;
+}
+
+nav ul {
+    padding-left: 0;
+    margin: 0;
+}
+
+nav li {
+    list-style: none;
+    display: inline-block;    
+}
+
+nav a {
+    display: inline-block;    
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-color: transparent;
+    text-decoration: none;
+}
+
+nav a:hover {
+    border-bottom-color: #4CAF50;
+}
+
+nav a.active {
+    border-bottom-color: #2E7D32;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    width: 250px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.user img {
+    width: 250px;
+}
+
+.user-description {
+    padding: 0.5rem;
+}
+
+.user h2 {
+    margin-top: 0;
+
+}
