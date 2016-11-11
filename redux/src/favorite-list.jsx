@@ -49,7 +49,9 @@ export default class extends React.Component {
         return (
             <div className="container">
                 <h1>My Favorites</h1>
-                {userCards}
+                <div className="user-list">
+                    {userCards}
+                </div>
             </div>
         );
     }

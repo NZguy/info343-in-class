@@ -97,7 +97,18 @@ function reducer(state, action) {
     //just more compact
     switch(action.type) {
         case ADD_FAV_ACTION:
+            //if the item already exists in the favorites
+            //array, just return the old state
+            if (state.favorites.find(item => item.id === action.item.id)) {
+                return state;
+            }
+
             //create a new state object (see above as to why)
+            //Object.assign() will assign all properties from
+            //the `state` object to the new object we pass as 
+            //the first parameter. This is how we clone objects
+            //in JavaScript. See:
+            //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
             var newState = Object.assign({}, state);
             //use concat to generate a new array with the new item
             //concatenated on the end; this preserves state.favorites.
@@ -106,11 +117,11 @@ function reducer(state, action) {
             newState.favorites = newState.favorites.concat(action.item);
             return newState;            
             //the above lines could be shortened to a single line like this:
-            //return Object.assign({}, {favorites: state.favorites.concat(action.item)}, state);
+            //return Object.assign({}, state, {favorites: state.favorites.concat(action.item)});
         case REMOVE_FAV_ACTION:
             //return a new state object with a new favorites array
             //with the specified item removed; use `.filter()` to remove it
-            return Object.assign({}, {favorites: state.favorites.filter(item => item.id != action.id)}, state);
+            return Object.assign({}, state, {favorites: state.favorites.filter(item => item.id != action.id)});
         default:
             //if we don't recognize the action, return the state
             //that was passed in to us; redux requires this
