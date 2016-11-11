@@ -9,6 +9,8 @@ import React from "react";
 import "whatwg-fetch";
 
 import UserCard from "./user-card.jsx";
+//import the redux store and the addFavorite action creator function 
+//from our ./shared-state.js module
 import {store, addFavorite} from "./shared-state.js";
 
 const GITHUB_USERS_API = "https://api.github.com/users";
@@ -48,6 +50,13 @@ export default class extends React.Component {
     render() {
         var userCards;
         if (this.state.users) {
+            //when the user clicks the Add To Favorites button, create and
+            //dispatch an add favorite action, specifying the current record
+            //as the item to add to the list of favorites.
+            //note that the <button> element is *inside* the <UserCard> element.
+            //that <button> will be passed to the <UserCard> as the `children`
+            //property on its `props` object, so the <UserCard> component can
+            //render it with the expression `{this.props.children}`
             userCards = this.state.users.map(record => 
                 <UserCard key={record.id} user={record}>
                     <button onClick={() => store.dispatch(addFavorite(record))}>
