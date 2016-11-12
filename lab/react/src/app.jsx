@@ -1,42 +1,89 @@
 import React from 'react';
-import 'whatwg-fetch'; // A Fetch polyfill
+import 'whatwg-fetch';
 import "./css/main.css";
 
-import WeatherCard from './WeatherCard.jsx';
-import SearchCity from './SearchCity.jsx';
+import WeatherCard from './WeatherCardSolution.jsx';
+import SearchCity from './SearchCitySolution.jsx';
 
-// We will be fetching weather data with a city name. For more information visit:
-// http://openweathermap.org/current ('By city name' is the first option)
-// Use the Fetch api to make your calls : https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-// Familiarize yourself with React's lifecycle methods : https://facebook.github.io/react/docs/react-component.html
+
 const url = 'http://api.openweathermap.org/data/2.5/weather?q=';
-// Put your key after the '='
-const key = '&APPID=';
+const key = '&APPID=0fb08316daf6d617035e6c494fedc392';
 
 export default class extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            fahrenheit: true,
+			data: {}
+        };        
     }
 	
-	// This function is for part 2. It looks at the state property for Fahrenheit (which you will have to define)
-	// and converts the initial temperature from Kelvin to either Fahrenheit or Celsius. 
-	// Returns the value with no decimal points.
-	// 
-	// convert(temp) {
-	// 	if (this.state.fahrenheit) {
-	// 		return (temp * (9 / 5) - 459.67).toFixed(0);
-	// 	} else {
-	// 		return (temp -  273.15).toFixed(0);
-	// 	}
-	// }
+	handleClick() {
+		this.setState({fahrenheit: !this.state.fahrenheit});
+	}
 
-    render() {    	
+	handleSearch(query) {
+		fetch(url + query + key)
+			.then(response => {
+				if (!response.ok) throw response.statusText;
+				return response.json()
+			})
+			.then(data => this.setState({error: false, data: data}))
+			.catch(error => this.setState({error: true}));
+	}
+
+	convert(temp) {
+		if (this.state.fahrenheit) {
+			return (temp * (9 / 5) - 459.67).toFixed(0);
+		} else {
+			return (temp -  273.15).toFixed(0);
+		}
+	}
+
+	componentDidMount() {
+		fetch(url + 'Seattle' + key)
+			.then(response => response.json())
+			.then(data => this.setState({data: data}));
+	}
+
+    render() {
+    	var content;
+		if (this.state.error) {
+			content = <p className="center-text">Invalid city name.</p>;
+		} else {
+			content = (
+				<div>
+					<div className="button-house">
+						<button 
+							className={"mdl-button mdl-js-button mdl-button--primary " + (this.state.fahrenheit ? "button-clicked" : "")}
+							onClick={() => this.handleClick()}
+						>
+						  &#176;F
+						</button>
+						<button 
+							className={"mdl-button mdl-js-button mdl-button--primary " + (!this.state.fahrenheit ? "button-clicked" : "")}
+							onClick={() => this.handleClick()}
+						>
+						  &#176;C
+						</button>					
+					</div> 
+					<div id="weather-area">
+						<WeatherCard 
+							data={this.state.data} 
+							convert={(num) => this.convert(num)} 
+							fahrenheit={this.state.fahrenheit}
+						/>					
+					</div>
+				</div>
+			);
+		}
+
         return (
-        	<div>
-	        	<p className="center-text">Replace this with your app</p>
-	        	<SearchCity />
-	        	<WeatherCard />
-	        </div>
+            <main className="container">
+				<h1 className="center-text">Current Weather</h1>
+				<SearchCity onSearch={query => this.handleSearch(query)}/>
+				{content}								              
+            </main>
         );
     }
 }

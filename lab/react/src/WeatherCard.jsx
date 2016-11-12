@@ -5,8 +5,23 @@ export default class extends React.Component {
 		super(props);
 	}
 
-	render() {		
-		return <p className="center-text">Replace this with your weather display element.</p>;
+	render() {
+		if (this.props.data.weather) {				
+			return (
+				<div className="demo-card-square mdl-card mdl-shadow--2dp weather-card">
+				    <div className="mdl-card__supporting-text">
+				    	<p className="weather-text center-text">{this.props.data.name}</p>
+				    	<p className="weather-text center-text">{moment().format('dddd, h:mm a')}</p>
+				    	<p className="weather-text center-text">{this.props.data.weather[0].description}</p>					    	
+				    	<h2 className="weather-temp center-text">
+				    		<img className="weather-img" src={"http://openweathermap.org/img/w/" + this.props.data.weather[0].icon + ".png"} alt="" />
+				    		<span>{this.props.convert(this.props.data.main.temp)} &#176;{this.props.fahrenheit ? 'F' : 'C'}</span>
+				    	</h2>
+				    </div>				    
+				</div>		
+			);
+		}
+		return <p className="center-text">Loading</p>;
 	}
 }
 		
