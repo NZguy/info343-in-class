@@ -10,7 +10,7 @@ export default class extends React.Component {
         };
 
         return (
-            <WeatherCard data={sampleData}/>
+            <WeatherCard data={sampleData} fahrenheit={true}/>
         );
     }
 }
