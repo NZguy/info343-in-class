@@ -1,0 +1,29 @@
+.container {
+        padding: 10px;
+        max-width: 1170px;
+        margin: 0 auto;
+}
+
+.center-text {
+        text-align: center;
+}
+
+.weather-card {
+        margin: 30px auto;      
+}
+
+.mdl-card__supporting-text {
+        padding-top: 40px;
+}
+
+.weather-content {
+        margin: 0 auto;
+}
+
+.weather-text:last-child {
+        margin-bottom: 0;
+}
+
+.weather-img {
+        width: 90px;
+}
