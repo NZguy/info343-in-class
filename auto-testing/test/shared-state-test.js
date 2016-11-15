@@ -20,6 +20,8 @@ var item = {id: 1, title: "testing item"};
  * to some specific part of the specification. Keep your tests
  * small and focused so that if it fails, you know right away
  * which part of your code is broken. 
+ * 
+ * For more details on Mocha, see https://mochajs.org/
  */
 
 //register one suite to test our redux store
