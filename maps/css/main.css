@@ -1,0 +1,13 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+/* make the <div id="map"> element 
+fill the entire viewport */
+#map {
+    width: 100vw; /* 1vw is 1/100th of the viewport width */
+    height: 100vh; /* 1vh is 1/100th of the viewport height */
+}
