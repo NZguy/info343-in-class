@@ -110,10 +110,8 @@ logValue("2016-10-27", formatAsDate);
 var someNumber = 123456789;
 //logValue(...)
 
-
-
-
-
+logValue(someNumber, formatAsNumber);
+logValue(someNumber, formatAsCurrency);
 
 console.groupEnd();
 
@@ -135,7 +133,8 @@ var course = {
     curriculum: "INFO",
     num: 343,
     section: "D",
-    title: "Client-Side Web Development"
+    title: "Client-Side Web Development",
+    foobar: ""
 };
 
 console.log("I'm taking", course.curriculum, course.num);
@@ -190,11 +189,9 @@ console.log("property names:", propNames);
  * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
  */
 
-
-
-
-
-
+propNames.forEach(function(name) {
+    console.log(name, "=", course[name]);
+});
 
 
 //FYI, this is essentially how the .forEach()
@@ -351,7 +348,18 @@ console.log("Total count", formatAsNumber(totalCount));
  * just reverse the logic in your compare function.
  */
 
+males.sort(function(rec1, rec2) {
+    return rec2.count - rec1.count;
+});
 
+var mostPopMaleRecs = males.slice(0,10);
+console.log("most popular male records", mostPopMaleRecs);
+var mostPopMaleNames = mostPopMaleRecs.map(function(rec) {
+    return rec.name;
+});
+
+console.log("most popular male names as array", mostPopMaleNames);
+console.log("most popular male names as single string", mostPopMaleNames.join(", "));
 
 /**
  * PRACTICE
@@ -369,8 +377,109 @@ console.log("Total count", formatAsNumber(totalCount));
  * top 10 and write those to the console.
  */
 
+//for you to do...
 
 
 
+/**
+ * ADVANCED MATERIAL
+ * If the following confuses you, don't worry about it.
+ * You don't need to know how to do this in order to
+ * finish the challenges.
+ */
+
+/**
+ * Closures are confusing, but they can be very powerful.
+ * We can write just a few functions and chain them 
+ * together to do exactly what we did above, but with
+ * a lot less code. For example, suppose we had the 
+ * following function defined in a reusable code library:
+ */
+
+/**
+ * testProp() returns a function that can be used
+ * with array .filter(). The returned test function
+ * will test the property specified in `propName` 
+ * against the value specified in `value`.
+ */
+function testProp(propName, value) {
+    return function(record) {
+        return record[propName] == value;
+    }
+}
+
+/**
+ * compareByNumProp() returns a function that can
+ * be used with array .sort(). The returned compare
+ * function will compare as numbers the values of the 
+ * properties specified in `propName`
+ */
+function compareByNumProp(propName) {
+    return function(record1, record2) {
+        return record1[propName] - record2[propName];
+    }
+}
+
+/**
+ * compareByStringProp() returns a function that can
+ * be used with array .sort(). The returned compare
+ * function will compare as strings the values of the 
+ * properties specified in `propName`
+ */
+function compareByStringProp(propName) {
+    return function(record1, record2) {
+        return record1[propName].localeCompare(record2[propName]);
+    }
+}
+
+/**
+ * descending() returns a sort compare function that
+ * reverses the result of the comparefunction passed 
+ * as `compareFn`. If `compareFn` returns a positive 
+ * value, the returned compare function switches that
+ * to negative, and vice-versa.
+ */
+function descending(compareFn) {
+    return function(record1, record2) {
+        return -(compareFn(record1, record2));
+    }
+}
+
+/**
+ * extractProp() returns a transform function that cam 
+ * be used with array .map(). The returned transform
+ * function will return just the value for the property
+ * name provided as `propName`
+ */
+function extractProp(propName) {
+    return function(record) {
+        return record[propName];
+    }
+}
+
+/**
+ * Now we can chain those functions together to do
+ * everything we did above in one line of code!
+ */
+
+//write the top 10 males names to the console
+console.log("top 10 males names (functional)", 
+    BABYNAMES.filter(testProp("sex", "M"))
+        .sort(descending(compareByNumProp("count")))
+        .map(extractProp("name"))
+        .slice(0,10)
+        .join(", ")
+);
+
+//write the top 10 female names to the console
+console.log("top 10 female names (functional)", 
+    BABYNAMES.filter(testProp("sex", "F"))
+        .sort(descending(compareByNumProp("count")))
+        .map(extractProp("name"))
+        .slice(0,10)
+        .join(", ")
+);
+
+// ~ fin ~
 
 console.groupEnd();

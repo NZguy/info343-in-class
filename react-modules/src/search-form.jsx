@@ -8,7 +8,11 @@ import React from "react";
  * passed in the `onSearch` property when the  
  * user submits the form. The search query string 
  * will be passed as the first parameter to that
- * callback function.
+ * callback function. Users of this component may
+ * also provide customized placeholder text to
+ * be shown in the <input> element; by default it 
+ * will show "what are you looking for?" as the 
+ * placeholder text.
  */
 export default class extends React.Component {
     constructor(props) {
