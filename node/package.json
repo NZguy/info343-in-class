@@ -1,0 +1,24 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "sample node server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/info343-a16/info343-in-class.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/info343-a16/info343-in-class/issues"
+  },
+  "homepage": "https://github.com/info343-a16/info343-in-class#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "yelp": "^1.0.1"
+  }
+}
