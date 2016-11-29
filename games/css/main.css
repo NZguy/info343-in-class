@@ -8,4 +8,6 @@ body {
 
 canvas {
     background-color: #F0F0F0;
+    display: block;
+    cursor: none;
 }
