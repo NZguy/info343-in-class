@@ -31,7 +31,11 @@ canvas {
 }
 
 .saturate {
-	filter: saturate(500%);
+	filter: saturate(250%);
+}
+
+.hue-rotate {
+	filter: hue-rotate(180deg);
 }
 
 .blur {
